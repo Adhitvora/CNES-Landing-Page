@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, Children, cloneElement } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion, useSpring } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
 import { useMagnetic } from "../../hooks/useMagnetic";
@@ -40,8 +40,8 @@ export function SectionTitle({ eyebrow, title, description, align = "left" }) {
   );
 }
 
-export function AnimatedCounter({ value, prefix = "", suffix = "" }) {
-  const spring = useSpring(0, { stiffness: 70, damping: 22 });
+export function AnimatedCounter({ value, prefix = "", suffix = "", duration = 2 }) {
+  const spring = useSpring(0, { stiffness: 50, damping: 18, duration: duration * 0.8 });
   const [display, setDisplay] = useState(0);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-15%" });
@@ -70,17 +70,48 @@ export function AnimatedCounter({ value, prefix = "", suffix = "" }) {
   );
 }
 
-export function Reveal({ children, delay = 0, y = 24, className = "" }) {
+export function Reveal({ children, delay = 0, y = 20, x = 0, scale = 1, className = "" }) {
   const reduceMotion = useReducedMotion();
   return (
     <motion.div
       className={className}
-      initial={reduceMotion ? false : { opacity: 0, y }}
-      whileInView={reduceMotion ? {} : { opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-10%" }}
-      transition={{ duration: 0.62, delay, ease: [0.2, 0.8, 0.2, 1] }}
+      initial={reduceMotion ? false : { opacity: 0, y, x, scale }}
+      whileInView={reduceMotion ? {} : { opacity: 1, y: 0, x: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-8%" }}
+      transition={{ duration: 0.55, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
+    </motion.div>
+  );
+}
+
+export function StaggerReveal({ children, staggerDelay = 0.06, className = "" }) {
+  const reduceMotion = useReducedMotion();
+  return (
+    <motion.div
+      className={className}
+      initial={reduceMotion ? undefined : "hidden"}
+      whileInView={reduceMotion ? undefined : "show"}
+      viewport={{ once: true, margin: "-8%" }}
+      variants={{
+        hidden: {},
+        show: { transition: { staggerChildren: staggerDelay } },
+      }}
+    >
+      {Children.map(children, (child) =>
+        child
+          ? cloneElement(child, {
+              ...child.props,
+              as: motion.div,
+              variants: reduceMotion
+                ? undefined
+                : {
+                    hidden: { opacity: 0, y: 20 },
+                    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } },
+                  },
+            })
+          : null
+      )}
     </motion.div>
   );
 }
@@ -92,11 +123,11 @@ export function Badge({ children }) {
 export function Accordion({ item, open, onToggle }) {
   const reduceMotion = useReducedMotion();
   return (
-    <div className={styles.accordion}>
+    <div className={`${styles.accordion} ${open ? styles.accordionOpen : ""}`}>
       <h3>
         <button className={styles.accordionButton} aria-expanded={open} onClick={onToggle}>
           {item.question}
-          <Plus className={styles.accordionIcon} size={22} aria-hidden="true" />
+          <Plus className={styles.accordionIcon} size={20} aria-hidden="true" />
         </button>
       </h3>
       <AnimatePresence initial={false}>
@@ -106,7 +137,7 @@ export function Accordion({ item, open, onToggle }) {
             initial={reduceMotion ? false : { height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: reduceMotion ? 0 : 0.3 }}
+            transition={{ duration: reduceMotion ? 0 : 0.28, ease: [0.16, 1, 0.3, 1] }}
           >
             <p>{item.answer}</p>
           </motion.div>
@@ -126,6 +157,24 @@ export function Modal({ open, children, onClose, label }) {
     <div className={styles.modalBackdrop} role="presentation" onMouseDown={onClose}>
       <div className={styles.modal} role="dialog" aria-modal="true" aria-label={label} onMouseDown={(event) => event.stopPropagation()}>
         {children}
+      </div>
+    </div>
+  );
+}
+
+export function InfiniteMarquee({ items, speed = 30, className = "" }) {
+  const doubled = [...items, ...items];
+  return (
+    <div
+      className={`${styles.marqueeTrack} ${className}`}
+      style={{ "--marquee-speed": `${speed}s` }}
+    >
+      <div className={styles.marqueeSlide}>
+        {doubled.map((logo, i) => (
+          <div key={`${logo.alt}-${i}`} className={styles.marqueeItem}>
+            <img src={logo.src} alt={logo.alt} loading="lazy" />
+          </div>
+        ))}
       </div>
     </div>
   );

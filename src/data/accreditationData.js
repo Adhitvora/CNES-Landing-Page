@@ -9,7 +9,7 @@ export const accreditationData = {
     { short: "ISSA", title: "ISSA Education Partner", detail: "International fitness education partnership", tone: "violet" },
     {
       short: "ACE · NASM · AFAA",
-      title: "Internationally Approved Continuing Education Provider",
+      title: "Global Accreditation Partner",
       detail: "Continuing education recognition across leading organisations",
       tone: "cyan",
     },

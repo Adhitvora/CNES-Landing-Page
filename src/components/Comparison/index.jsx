@@ -1,4 +1,4 @@
-import { Check, Minus } from "lucide-react";
+import { XCircle, CheckCircle2 } from "lucide-react";
 import { siteData } from "../../data/siteData";
 import { Reveal, SectionTitle } from "../UI";
 import section from "../../styles/Sections.module.css";
@@ -18,9 +18,9 @@ export default function Comparison() {
                   {column.items.map((item) => (
                     <li key={item}>
                       {column.tone === "accent" ? (
-                        <Check size={19} color="var(--color-gold-300)" aria-hidden="true" />
+                        <CheckCircle2 size={19} color="var(--color-green-500)" aria-hidden="true" />
                       ) : (
-                        <Minus size={19} color="var(--color-ink)" aria-hidden="true" />
+                        <XCircle size={19} color="var(--color-danger)" aria-hidden="true" />
                       )}
                       {item}
                     </li>

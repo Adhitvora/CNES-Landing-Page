@@ -1,6 +1,6 @@
 import { accreditationData } from "../../data/accreditationData";
 import { accreditationLogos, mediaLogos, partnerLogos } from "../../assets";
-import { Reveal, SectionTitle } from "../UI";
+import { Reveal, SectionTitle, InfiniteMarquee } from "../UI";
 import styles from "./Accreditation.module.css";
 
 const accents = {
@@ -9,22 +9,8 @@ const accents = {
   violet: "var(--color-violet-500)",
 };
 
-function Marquee({ items, label, speed = 30 }) {
-  // Duplicate items for seamless loop
-  const doubled = [...items, ...items];
-  return (
-    <div className={styles.marqueeSection}>
-      <span className={styles.marqueeLabel}>{label}</span>
-      <div className={styles.marqueeTrack} style={{ "--marquee-speed": `${speed}s` }}>
-        <div className={styles.marqueeSlide} aria-hidden="false">
-          {doubled.map((logo, i) => (
-            <img key={`${logo.alt}-${i}`} src={logo.src} alt={logo.alt} loading="lazy" />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
+/* Logos that need a light background for visibility */
+const needsLightBg = new Set(["EREPS", "ACE · NASM · AFAA", "SPEFL-SC", "ISSA"]);
 
 export default function Accreditation() {
   return (
@@ -39,13 +25,14 @@ export default function Accreditation() {
         <div className={styles.cardGrid}>
           {accreditationData.items.map((item, index) => {
             const logoSrc = accreditationLogos[item.short];
+            const isLight = needsLightBg.has(item.short);
             return (
               <Reveal key={item.short} delay={index * 0.06}>
                 <article
                   className={styles.card}
                   style={{ "--accent": accents[item.tone] }}
                 >
-                  <div className={styles.logoWrap}>
+                  <div className={`${styles.logoWrap} ${isLight ? styles.logoWrapLight : ""}`}>
                     {logoSrc ? (
                       <img src={logoSrc} alt={item.short} loading="lazy" />
                     ) : (
@@ -67,8 +54,14 @@ export default function Accreditation() {
       {/* Infinite Marquee Carousels */}
       <div className={styles.carousels}>
         <div className="container">
-          <Marquee items={mediaLogos} label="Featured In" speed={28} />
-          <Marquee items={partnerLogos} label="Our Students Work At" speed={32} />
+          <div className={styles.marqueeSection}>
+            <span className={styles.marqueeLabel}>Featured In</span>
+            <InfiniteMarquee items={mediaLogos} speed={32} />
+          </div>
+          <div className={styles.marqueeSection}>
+            <span className={styles.marqueeLabel}>Our Students Work At</span>
+            <InfiniteMarquee items={partnerLogos} speed={38} />
+          </div>
         </div>
       </div>
     </section>
