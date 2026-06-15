@@ -1,0 +1,55 @@
+export const revenueData = {
+  eyebrow: "Diversified academy economics",
+  title: "Multiple Revenue Streams",
+  intro: "As a CNES Franchise Partner, you can generate income through:",
+  tabsLabel: "Revenue program categories",
+  categories: [
+    {
+      id: "professional",
+      label: "Professional Certifications",
+      title: "Career-launching certification programs",
+      description: "Build flagship batches around recognised professional pathways.",
+      programs: [
+        "Certified Personal Trainer",
+        "Certified Fitness Trainer",
+        "Strength & Conditioning Coach",
+        "Group Fitness Instructor",
+        "Diploma in Nutrition & Fitness",
+      ],
+      strength: 92,
+    },
+    {
+      id: "government",
+      label: "Government Courses",
+      title: "NSQF-aligned professional pathways",
+      description: "Extend your academy portfolio with role-focused qualifications.",
+      programs: [
+        "NSQF Level 4 General Fitness Trainer",
+        "NSQF Level 5 Personal Fitness Trainer",
+        "NSQF Level 5.5 Strength & Conditioning Coach",
+        "NSQF Level 6 Sports Nutritionist",
+      ],
+      strength: 78,
+    },
+    {
+      id: "continuing",
+      label: "Continuing Education",
+      title: "Specialist programs for lifelong learning",
+      description: "Keep professionals returning to gain practical specialist capabilities.",
+      programs: [
+        "Functional Training Specialist",
+        "Mat Pilates Specialist",
+        "PT Essentials",
+        "Strength & Conditioning Training Specialist",
+        "Pre & Post Natal Exercise Specialist",
+        "Women's Health Exercise Specialist",
+        "And much more",
+      ],
+      strength: 86,
+    },
+  ],
+  visualization: {
+    label: "Portfolio breadth",
+    note: "Qualitative view based on the range of programs available. Not a revenue projection.",
+  },
+};

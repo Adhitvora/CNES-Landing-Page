@@ -1,0 +1,121 @@
+.section {
+  padding: 112px 0;
+  background: var(--color-navy-950);
+  color: var(--color-white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 18px;
+  margin-top: 56px;
+}
+
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 30px 26px;
+  border: 1px solid rgba(185, 194, 208, 0.1);
+  border-radius: var(--radius-md);
+  background: linear-gradient(165deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.015) 100%);
+  overflow: hidden;
+  transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 195, 40, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 20px rgba(255, 195, 40, 0.06);
+}
+
+.card:nth-child(4n+2):hover {
+  border-color: rgba(43, 196, 243, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 20px rgba(43, 196, 243, 0.06);
+}
+
+.card:nth-child(4n+3):hover {
+  border-color: rgba(91, 91, 239, 0.35);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), 0 0 20px rgba(91, 91, 239, 0.06);
+}
+
+.cardNumber {
+  position: absolute;
+  top: 16px;
+  right: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  color: rgba(185, 194, 208, 0.2);
+  letter-spacing: 0.04em;
+}
+
+.iconBox {
+  display: grid;
+  width: 50px;
+  height: 50px;
+  place-items: center;
+  border-radius: 10px;
+  color: var(--color-navy-950);
+  background: var(--color-gold-500);
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+
+.card:hover .iconBox {
+  transform: scale(1.08) rotate(3deg);
+}
+
+.card:nth-child(4n+2) .iconBox {
+  background: var(--color-cyan-500);
+}
+
+.card:nth-child(4n+3) .iconBox {
+  background: var(--color-violet-500);
+  color: var(--color-white);
+}
+
+.card:nth-child(4n+4) .iconBox {
+  background: var(--color-gold-500);
+}
+
+.cardTitle {
+  margin: 22px 0 10px;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.cardDesc {
+  margin: 0;
+  color: var(--color-muted);
+  font-size: 14px;
+  line-height: 1.65;
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 90px 0;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 72px 0;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .card {
+    padding: 24px 22px;
+  }
+}

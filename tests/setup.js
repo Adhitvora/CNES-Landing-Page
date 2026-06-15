@@ -1,0 +1,28 @@
+import "@testing-library/jest-dom/vitest";
+
+Object.defineProperty(window, "matchMedia", {
+  writable: true,
+  value: (query) => ({
+    matches: query.includes("prefers-reduced-motion"),
+    media: query,
+    onchange: null,
+    addListener: () => {},
+    removeListener: () => {},
+    addEventListener: () => {},
+    removeEventListener: () => {},
+    dispatchEvent: () => false,
+  }),
+});
+
+class IntersectionObserverMock {
+  observe(element) {
+    this.callback?.([{ isIntersecting: true, target: element }]);
+  }
+  unobserve() {}
+  disconnect() {}
+  constructor(callback) {
+    this.callback = callback;
+  }
+}
+
+global.IntersectionObserver = IntersectionObserverMock;
