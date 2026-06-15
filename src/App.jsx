@@ -1,5 +1,5 @@
 import { lazy, Suspense } from "react";
-import Header from "./components/Header";
+
 import Hero from "./components/Hero";
 import About from "./components/About";
 import MissionVision from "./components/MissionVision";
@@ -46,11 +46,11 @@ export default function App() {
   return (
     <>
       <StructuredData />
-      <Header />
+
       <a className="skip-link" href="#main-content">
         {siteData.accessibility.skipLink}
       </a>
-  
+
       <main id="main-content">
         <Hero />
         <About />
@@ -122,9 +122,7 @@ export default function App() {
           </Suspense>
         </DeferredSection>
       </main>
-      <Suspense fallback={null}>
-        <Footer />
-      </Suspense>
+
     </>
   );
 }
