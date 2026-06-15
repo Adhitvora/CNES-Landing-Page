@@ -62,18 +62,26 @@ export const siteData = {
       {
         label: "Traditional Gym Revenue",
         tone: "muted",
-        items: ["Monthly Memberships", "Personal Training Packages", "Seasonal Retention Challenges"],
+        items: [
+          "Limited Membership-Based Income",
+          "Dependence on Daily Gym Attendance",
+          "High Client Dropout Rates",
+          "Difficult Revenue Forecasting",
+          "Constant Price Competition",
+          "Limited Scalability"
+        ]
+
       },
       {
         label: "CNES Academy Revenue",
         tone: "accent",
         items: [
-          "Course Admissions",
-          "Workshop Registrations",
-          "Certification Programs",
-          "Practical Training Sessions",
-          "Career Development Programs",
-          "Continuing Education Courses",
+          "Multiple Educational Revenue Streams",
+          "Admissions, Workshops & Certifications",
+          "Structured Academic Programs",
+          "Predictable Batch-Based Income",
+          "Premium Certification Authority",
+          "Scalable Education Business Model"
         ],
       },
     ],

@@ -15,7 +15,7 @@ export const aboutData = {
     label: "Our Mission",
     title: "Educate. Upskill. Inspire.",
     body:
-      "To educate, upskill, and inspire fitness professionals through affordable, accessible, and industry-relevant education.",
+      "To educate, upskill, and inspire fitness professionals through affordable, accessible, and industry-relevant education that creates future-ready professionals.",
   },
   vision: {
     label: "Our Vision",
