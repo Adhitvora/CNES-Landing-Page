@@ -12,10 +12,27 @@ export const heroData = {
     "This is more than a franchise. It is an opportunity to build a respected academy that transforms lives while creating a profitable and scalable business.",
   image: mediaData.hero,
   stats: [
-    { value: 4, suffix: "+", label: "Recognition networks" },
-    { value: 3, suffix: "", label: "Program categories" },
-    { value: 6, suffix: "", label: "Support pillars" },
-    { value: 5, suffix: "L+", prefix: "₹", label: "Starting investment" },
+    {
+      value: 16,
+      suffix: "+",
+      label: "Education Partners",
+    },
+    {
+      value: 40,
+      suffix: "+",
+      label: "Certification Courses",
+    },
+    {
+      value: 5000,
+      suffix: "+",
+      label: "Certified Students",
+    },
+    {
+      value: 5,
+      prefix: "₹",
+      suffix: "L+",
+      label: "Starting Investment",
+    },
   ],
   trust: ["Globally Accredited Programs", "Nationally Expanding Network", "Complete Franchise Support"],
 };
