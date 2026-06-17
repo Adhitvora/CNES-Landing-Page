@@ -6,7 +6,7 @@ import sportFitness from "./Logo/Sport and Fitness.webp";
 import europeActive from "./Logo/european Active.webp";
 import europeStandards from "./Logo/european standards europe active.webp";
 import cpraed from "./Logo/CPRAED.jpg";
-import aafaLogo from "./Logo/AFAA.png"; 
+import aafaLogo from "./Logo/AFAA.png";
 import nasmLogo from "./Logo/NASM.png";
 import issaLogo from "./Logo/ISSA.png";
 import NASM_AFFA from "./Logo/NASM-AFFA.png";
@@ -28,10 +28,11 @@ import goldsGym from "./Placement_Partner/Gold's Gym.png";
 export const accreditationLogos = {
   EREPS: erepsLogo,
   "SPEFL-SC": sportFitness,
-  ISSA: europeActive,
+  ISSA: issaLogo,
   "ACE · NASM · AFAA": aceLogo,
   FWPI: fwpiblueLogo,
-  "NASM-AFFA" : NASM_AFFA,
+  "NASM-AFFA": NASM_AFFA,
+
 };
 
 export const extraLogos = {
