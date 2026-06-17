@@ -1,7 +1,7 @@
 import erepsLogo from "./Logo/EREPS-logo-fc.png";
 import aceLogo from "./Logo/ACE-Logo.png";
 import fwpiLogo from "./Logo/FWPI-logo.png";
-import fwpiblueLogo from "./Logo/FWPI-blue.png";
+import fwpiblueLogo from "./Logo/FWPI-Blue.png";
 import sportFitness from "./Logo/Sport and Fitness.webp";
 import europeActive from "./Logo/european Active.webp";
 import europeStandards from "./Logo/european standards europe active.webp";
