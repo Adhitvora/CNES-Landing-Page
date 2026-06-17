@@ -1,10 +1,16 @@
 import erepsLogo from "./Logo/EREPS-logo-fc.png";
 import aceLogo from "./Logo/ACE-Logo.png";
 import fwpiLogo from "./Logo/FWPI-logo.png";
+import fwpiblueLogo from "./Logo/FWPI-blue.png";
 import sportFitness from "./Logo/Sport and Fitness.webp";
 import europeActive from "./Logo/european Active.webp";
 import europeStandards from "./Logo/european standards europe active.webp";
 import cpraed from "./Logo/CPRAED.jpg";
+import aafaLogo from "./Logo/AFAA.png"; 
+import nasmLogo from "./Logo/NASM.png";
+import issaLogo from "./Logo/ISSA.png";
+import NASM_AFFA from "./Logo/NASM-AFFA.png";
+
 
 import businessUpturn from "./News/Business-Upturn-logo.png";
 import indiaShorts from "./News/India-Shorts-Logo.png";
@@ -24,7 +30,8 @@ export const accreditationLogos = {
   "SPEFL-SC": sportFitness,
   ISSA: europeActive,
   "ACE · NASM · AFAA": aceLogo,
-  FWPI: fwpiLogo,
+  FWPI: fwpiblueLogo,
+  "NASM-AFFA" : NASM_AFFA,
 };
 
 export const extraLogos = {

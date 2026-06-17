@@ -1,0 +1,96 @@
+/* ── Enhanced Tabs ──────────────────────────────────────── */
+.tabs {
+  position: relative;
+  display: flex;
+  gap: 6px;
+  margin: 36px 0 22px;
+  padding: 5px;
+  overflow-x: auto;
+  border: 1px solid rgba(185, 194, 208, 0.14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.025);
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab {
+  position: relative;
+  min-height: 46px;
+  flex: 1 0 max-content;
+  padding: 10px 18px;
+  color: var(--color-muted);
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.01em;
+  transition: color 0.3s ease, background 0.3s ease;
+  scroll-snap-align: start;
+  white-space: nowrap;
+}
+
+.tab:hover {
+  color: var(--color-white);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.tab[aria-selected="true"] {
+  color: var(--color-navy-950);
+  z-index: 1;
+}
+
+.activeIndicator {
+  position: absolute;
+  inset: 0;
+  background: var(--color-gold-500);
+  border-radius: 4px;
+  z-index: -1;
+}
+
+/* ── Compact Support Panel ──────────────────────────────── */
+.supportPanel {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(255, 195, 40, 0.06);
+  border: 1px solid rgba(255, 195, 40, 0.15);
+  border-radius: 8px;
+}
+
+.supportPanel h4 {
+  margin: 0 0 10px;
+  font-size: 17px;
+  line-height: 1.3;
+  color: var(--color-gold-300);
+  font-weight: 700;
+}
+
+.supportPanel p {
+  margin: 0 0 18px;
+  color: var(--color-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 760px) {
+  .tabs {
+    margin: 28px 0 20px;
+  }
+
+  .supportPanel {
+    padding: 20px;
+  }
+
+  .supportPanel h4 {
+    font-size: 16px;
+  }
+
+  .supportPanel p {
+    font-size: 13px;
+  }
+}

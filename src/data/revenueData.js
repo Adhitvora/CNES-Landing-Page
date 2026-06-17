@@ -13,10 +13,10 @@ export const revenueData = {
         "Certified Personal Trainer",
         "Certified Fitness Trainer",
         "Strength & Conditioning Coach",
-        "Group Fitness Instructor",
         "Diploma in Nutrition & Fitness",
+        "Diploma in Special Population",
+        "Yoga Teacher",
       ],
-      strength: 92,
     },
     {
       id: "government",
@@ -26,10 +26,10 @@ export const revenueData = {
       programs: [
         "NSQF Level 4 General Fitness Trainer",
         "NSQF Level 5 Personal Fitness Trainer",
+        "NSQF Level 5 Group Fitness Trainer",
         "NSQF Level 5.5 Strength & Conditioning Coach",
         "NSQF Level 6 Sports Nutritionist",
       ],
-      strength: 78,
     },
     {
       id: "continuing",
@@ -39,17 +39,18 @@ export const revenueData = {
       programs: [
         "Functional Training Specialist",
         "Mat Pilates Specialist",
-        "PT Essentials",
+        "Personal Fitness Training Essentials",
         "Strength & Conditioning Training Specialist",
         "Pre & Post Natal Exercise Specialist",
         "Women's Health Exercise Specialist",
-        "And much more",
+        "Diet & Nutrition Coach",
+        "And Much More",
       ],
-      strength: 86,
     },
   ],
-  visualization: {
-    label: "Portfolio breadth",
-    note: "Qualitative view based on the range of programs available. Not a revenue projection.",
+  cta: {
+    title: "Explore Multiple Revenue Streams",
+    description: "Build revenue through certifications, government-recognized programs and continuing education pathways.",
+    primaryButton: "Request Franchise Details",
   },
 };

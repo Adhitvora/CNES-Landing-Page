@@ -10,7 +10,7 @@ const accents = {
 };
 
 /* Logos that need a light background for visibility */
-const needsLightBg = new Set(["EREPS", "ACE · NASM · AFAA", "SPEFL-SC", "ISSA"]);
+const needsLightBg = new Set(["EREPS", "ACE · NASM · AFAA", "SPEFL-SC", "ISSA","FWPI", "NASM-AFFA"]);
 
 export default function Accreditation() {
   return (

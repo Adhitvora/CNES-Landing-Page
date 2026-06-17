@@ -53,7 +53,10 @@ export default function Header() {
             </div>
           </nav>
 
-          <Button className={styles.headerCta} magnetic onClick={() => scrollToEnquiry("header")}>
+          <Button className={styles.headerCta}  magnetic
+              onClick={() => scrollToEnquiry("faq_sidebar")}
+              style={{ marginTop: 8 }}
+            >
             {siteData.actions.short}
           </Button>
 
