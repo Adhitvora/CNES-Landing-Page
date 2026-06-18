@@ -1,6 +1,6 @@
 import { Check } from "lucide-react";
 import { siteData } from "../../data/siteData";
-import { Reveal, SectionTitle } from "../UI";
+import { Reveal, SectionTitle, LinkButton } from "../UI";
 import section from "../../styles/Sections.module.css";
 
 export default function Investment() {
@@ -23,6 +23,18 @@ export default function Investment() {
               </li>
             ))}
           </ul>
+          <div style={{ marginTop: 18 }}>
+            <LinkButton
+              href={`tel:${siteData.contact.phoneHref}`}
+              variant="dark"
+              onClick={() => {
+                // small analytics hook
+                try { window.trackEvent?.("cta_click", { source: "investment_call" }); } catch (e) {}
+              }}
+            >
+              {siteData.actions.call || "Call an Advisor"}
+            </LinkButton>
+          </div>
         </Reveal>
       </div>
     </section>

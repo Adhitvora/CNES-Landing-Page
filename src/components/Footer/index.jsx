@@ -1,6 +1,7 @@
 import { ArrowUp } from "lucide-react";
 import { footerData } from "../../data/footerData";
 import { siteData } from "../../data/siteData";
+import { LinkButton } from "../UI";
 import { trackEvent } from "../../utils/analytics";
 import logo from "../../assets/Logo.png";
 import styles from "./Footer.module.css";
@@ -49,8 +50,23 @@ export default function Footer() {
         <div className={styles.bottom}>
           <span>{footerData.legal}</span>
           <div className={styles.contact}>
-            <a href={`tel:${siteData.contact.phoneHref}`}>{siteData.contact.phoneDisplay}</a>
+            <a  href={`tel:${siteData.contact.phoneHref}`}>{siteData.contact.phoneDisplay}</a>
             <a href={`mailto:${siteData.contact.email}`}>{siteData.contact.email}</a>
+            {(() => {
+              const phone = siteData.contact?.phoneHref || "";
+              const digits = phone.replace(/[^0-9]/g, "");
+              const wa = `https://wa.me/${digits}?text=${encodeURIComponent(
+                "Hello, I would like to know more about the CNES Franchise opportunity."
+              )}`;
+              return (
+                <>
+                  <LinkButton external href={wa} variant="secondary" className={styles.footerCta}>
+                    WhatsApp
+                  </LinkButton>
+
+                </>
+              );
+            })()}
           </div>
         </div>
       </div>

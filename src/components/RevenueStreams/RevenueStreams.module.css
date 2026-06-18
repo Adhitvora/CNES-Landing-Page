@@ -94,3 +94,8 @@
     font-size: 13px;
   }
 }
+
+.whatsappLink {
+  display: inline-block;
+  margin-top: 6px;
+}

@@ -28,6 +28,10 @@
   margin-top: 34px;
 }
 
+.callCta {
+  display: inline-block;
+}
+
 .contact a {
   display: flex;
   align-items: center;

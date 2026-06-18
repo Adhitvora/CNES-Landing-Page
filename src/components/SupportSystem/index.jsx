@@ -1,6 +1,7 @@
 import { Rocket, BookOpen, BarChart3, Megaphone, Briefcase, TrendingUp } from "lucide-react";
 import { supportData } from "../../data/supportData";
-import { Reveal, SectionTitle } from "../UI";
+import { Reveal, SectionTitle, LinkButton } from "../UI";
+import { siteData } from "../../data/siteData";
 import styles from "./SupportSystem.module.css";
 
 const stepIcons = [Rocket, BookOpen, BarChart3, Megaphone, Briefcase, TrendingUp];
@@ -15,6 +16,27 @@ export default function SupportSystem() {
           description={supportData.intro}
           align="center"
         />
+        <div style={{ textAlign: "center", marginTop: 12 }}>
+          {(() => {
+            const phone = siteData.contact?.phoneHref || "";
+            const phoneDigits = phone.replace(/[^0-9]/g, "");
+            const wa = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(
+              "Hello, I would like to know more about the CNES Franchise opportunity."
+            )}`;
+            return (
+              <LinkButton
+                external
+                href={wa}
+                variant="secondary"
+                onClick={() => {
+                  try { window.trackEvent?.("cta_click", { source: "support_whatsapp" }); } catch (e) {}
+                }}
+              >
+                Talk to a Franchise Advisor
+              </LinkButton>
+            );
+          })()}
+        </div>
         <div className={styles.timeline}>
           <div className={styles.timelineLine} aria-hidden="true" />
           {supportData.items.map((item, index) => {

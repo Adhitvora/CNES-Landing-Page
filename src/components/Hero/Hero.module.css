@@ -103,6 +103,11 @@ pointer-events:visible;
   margin-top: 28px;
 }
 
+.ctaSmall {
+  padding: 8px 12px;
+  font-size: var(--text-sm);
+}
+
 .trust {
   display: flex;
   flex-wrap: wrap;

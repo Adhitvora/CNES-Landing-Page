@@ -2,6 +2,7 @@ import { useEffect, useRef, useState, Children, cloneElement } from "react";
 import { AnimatePresence, motion, useInView, useReducedMotion, useSpring } from "framer-motion";
 import { ArrowRight, Plus } from "lucide-react";
 import { useMagnetic } from "../../hooks/useMagnetic";
+import { siteData } from "../../data/siteData";
 import styles from "./UI.module.css";
 
 export function Button({
@@ -218,5 +219,75 @@ export function Timeline({ items, label }) {
         <li key={item}>{item}</li>
       ))}
     </ol>
+  );
+}
+
+export function LinkButton({ href, children, variant = "primary", full = false, className = "", icon = true, external = false, ...props }) {
+  const variantClass = variant === "secondary" ? styles.secondary : variant === "dark" ? styles.dark : "";
+  const classes = `${styles.button} ${variantClass} ${full ? styles.full : ""} ${className}`;
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        className={classes}
+        target={external ? "_blank" : undefined}
+        rel={external ? "noopener noreferrer" : undefined}
+        {...props}
+      >
+        {children}
+        {icon ? <ArrowRight size={18} aria-hidden="true" /> : null}
+      </a>
+    );
+  }
+
+  return (
+    <button type="button" className={classes} {...props}>
+      {children}
+      {icon ? <ArrowRight size={18} aria-hidden="true" /> : null}
+    </button>
+  );
+}
+
+export function MobileActionBar() {
+  const phone = siteData.contact?.phoneHref || "";
+  const phoneDigits = phone.replace(/[^0-9]/g, "");
+  const message = encodeURIComponent("Hello, I would like to know more about the CNES Franchise opportunity.");
+  const waLink = `https://wa.me/${phoneDigits}?text=${message}`;
+
+  return (
+    <div className={styles.mobileActionBar} aria-hidden={false}>
+      <div className={styles.mobileActionInner}>
+        <a
+          href={waLink}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`${styles.button} ${styles.mobileActionButton} ${styles.secondary}`}
+          aria-label="Chat on WhatsApp"
+        >
+          WhatsApp
+        </a>
+
+        <a
+          href={`tel:${phone}`}
+          className={`${styles.button} ${styles.mobileActionButton} ${styles.dark}`}
+          aria-label="Call now"
+        >
+          Call
+        </a>
+
+        <a
+          href="#enquiry"
+          onClick={(e) => {
+            e.preventDefault();
+            document.querySelector("#enquiry")?.scrollIntoView({ behavior: "smooth", block: "start" });
+          }}
+          className={`${styles.button} ${styles.mobileActionButton}`}
+          aria-label="Enquire"
+        >
+          Enquire
+        </a>
+      </div>
+    </div>
   );
 }

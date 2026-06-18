@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { heroData } from "../../data/heroData";
 import { siteData } from "../../data/siteData";
 import { scrollToEnquiry, trackEvent } from "../../utils/analytics";
-import { AnimatedCounter, Badge, Button } from "../UI";
+import { AnimatedCounter, Badge, Button, LinkButton } from "../UI";
 import logo from "../../assets/Logo.png";
 import styles from "./Hero.module.css";
 
@@ -101,6 +101,28 @@ export default function Hero() {
             >
               {siteData.actions.secondary}
             </Button>
+            {/* WhatsApp and Call CTAs - secondary/supporting */}
+            {(() => {
+              const phone = siteData.contact?.phoneHref || "";
+              const phoneDigits = phone.replace(/[^0-9]/g, "");
+              const wa = `https://wa.me/${phoneDigits}?text=${encodeURIComponent(
+                "Hello, I would like to know more about the CNES Franchise opportunity."
+              )}`;
+              return (
+                <>
+                  <LinkButton
+                    variant="secondary"
+                    external
+                    href={wa}
+                    className={styles.ctaSmall}
+                    onClick={() => trackEvent("cta_click", { source: "hero_whatsapp" })}
+                  >
+                    Chat on WhatsApp
+                  </LinkButton>
+    
+                </>
+              );
+            })()}
           </motion.div>
 
           <motion.div className={styles.trust} aria-label="CNES franchise trust indicators" variants={reduceMotion ? undefined : fadeUp}>

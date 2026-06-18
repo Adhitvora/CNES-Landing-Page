@@ -19,6 +19,7 @@ import FAQ from "./components/FAQ";
 import Footer from "./components/Footer";
 import StructuredData from "./seo/StructuredData";
 
+
 export default function App() {
   return (
     <>
@@ -48,6 +49,7 @@ export default function App() {
         <FAQ />
         <Footer />
       </main>
+      
     </>
   );
 }

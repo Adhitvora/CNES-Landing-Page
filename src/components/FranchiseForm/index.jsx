@@ -7,7 +7,7 @@ import { siteData } from "../../data/siteData";
 import { submitFranchiseEnquiry } from "../../services/franchiseService";
 import { trackEvent } from "../../utils/analytics";
 import { franchiseFormSchema } from "../../utils/formSchema";
-import { Button, Loader, Reveal, SectionTitle } from "../UI";
+import { Button, Loader, Reveal, SectionTitle, LinkButton } from "../UI";
 import styles from "./FranchiseForm.module.css";
 
 const defaultValues = {
@@ -117,6 +117,16 @@ export default function FranchiseForm() {
               </span>
               {siteData.contact.email}
             </a>
+            <div style={{ marginLeft: 12 }}>
+              <LinkButton
+                href={`tel:${siteData.contact.phoneHref}`}
+                variant="dark"
+                className={styles.callCta}
+                onClick={() => trackEvent("cta_click", { source: "enquiry_call" })}
+              >
+                Speak With Our Team
+              </LinkButton>
+            </div>
           </div>
         </Reveal>
 
