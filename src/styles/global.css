@@ -25,6 +25,7 @@ body {
 }
 
 body.menu-open {
+  /* prevent page behind the drawer from scrolling while menu is open */
   overflow: hidden;
 }
 

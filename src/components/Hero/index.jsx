@@ -67,14 +67,13 @@ export default function Hero() {
           initial={reduceMotion ? undefined : "hidden"}
           animate={reduceMotion ? undefined : "show"}
         >
-          <motion.img
-            src={logo}
-            alt="CNES"
+          {/* <div
+                    
             className={styles.heroLogo}
             width={200}
             height={55}
             variants={reduceMotion ? undefined : fadeUp}
-          />
+          /> */}
           <motion.span className={styles.eyebrow} variants={reduceMotion ? undefined : fadeUp}>
             {heroData.eyebrow}
           </motion.span>

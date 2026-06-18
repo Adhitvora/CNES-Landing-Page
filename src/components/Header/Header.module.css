@@ -10,6 +10,9 @@
     background var(--transition),
     border-color var(--transition),
     backdrop-filter var(--transition);
+  background: rgba(7, 18, 38, 0.88);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
 }
 
 .progress {
@@ -107,7 +110,8 @@
   padding: 8px 20px;
   font-size: var(--text-sm);
 }
-
+.navHeader {
+  display: none;}
 .menuButton {
   display: none;
   width: 42px;
@@ -158,24 +162,59 @@
 @media (max-width: 980px) {
   .nav {
     position: fixed;
-    top: var(--header-height);
+    top: 0;
     right: 0;
     bottom: 0;
-    width: min(86vw, 400px);
+    height: 100vh;
+    width: 100vw;
+    max-width: 420px;
+    z-index: 200;
+    display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    padding: 24px 22px;
+    padding: env(safe-area-inset-top, 24px) 22px env(safe-area-inset-bottom, 24px) 22px;
     transform: translateX(100%);
     background: rgba(14, 27, 53, 0.97);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
     box-shadow: var(--shadow-dark);
     transition: transform 300ms var(--ease-out-expo);
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .navOpen {
     transform: translateX(0);
+  }
+
+  /* Ensure header retains background when menu is open or scrolled */
+  .header.open,
+  .header.scrolled {
+    background: rgba(7, 18, 38, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  .navHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 8px;
+  }
+
+  .closeButton {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    color: var(--color-white);
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 10px;
+    cursor: pointer;
+    flex-shrink: 0;
   }
 
   .nav a {
@@ -210,6 +249,12 @@
   .menuButton {
     display: grid;
   }
+
+  /* hide header hamburger while drawer is open to avoid duplicate controls */
+  .header.open .menuButton {
+    display: none;
+  }
+  
 }
 
 @media (max-width: 700px) {

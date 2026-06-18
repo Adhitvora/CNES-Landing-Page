@@ -34,7 +34,7 @@ export default function Header() {
 
   return (
     <>
-      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""}`}>
+      <header className={`${styles.header} ${scrolled ? styles.scrolled : ""} ${menuOpen ? styles.open : ""}`}>
         <div className={styles.progress} style={{ width: `${scrollProgress}%` }} aria-hidden="true" />
         <div className={`container ${styles.inner}`}>
           <a className={styles.brand} href="#top" aria-label={siteData.brand.name}>
@@ -42,6 +42,20 @@ export default function Header() {
           </a>
 
           <nav className={`${styles.nav} ${menuOpen ? styles.navOpen : ""}`} aria-label="Primary navigation">
+            <div className={styles.navHeader}>
+              <a className={styles.brand} href="#top" aria-label={siteData.brand.name} onClick={() => setMenuOpen(false)}>
+                <img src={logo} alt="" className={styles.logo} width={130} height={36} />
+              </a>
+              <button
+                type="button"
+                className={styles.closeButton}
+                aria-label={siteData.actions.menuClose}
+                onClick={() => setMenuOpen(false)}
+              >
+                <X aria-hidden="true" />
+              </button>
+            </div>
+
             {siteData.navigation.map((item) => (
               <a key={item.href} href={item.href} onClick={() => closeAndTrack(item)}>
                 {item.label}
