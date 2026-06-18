@@ -5,7 +5,7 @@ export const footerData = {
     {
       title: "Explore",
       links: [
-        { label: "Why CNES", href: "#why-cnes" },
+        { label: "Why CNES", href: "#about" },
         { label: "Revenue Streams", href: "#revenue" },
         { label: "Support System", href: "#support" },
         { label: "Investment", href: "#investment" },

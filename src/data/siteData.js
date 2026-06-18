@@ -14,7 +14,7 @@ export const siteData = {
     email: "contactus@cnes.online",
   },
   navigation: [
-    { label: "Why CNES", href: "#why-cnes" },
+    { label: "Why CNES", href: "#about" },
     { label: "Revenue", href: "#revenue" },
     { label: "Support", href: "#support" },
     { label: "Investment", href: "#investment" },

@@ -6,6 +6,19 @@ import logo from "../../assets/Logo.png";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
+  function handleLinkClick(e, link) {
+    if (link.href.startsWith("#")) {
+      e.preventDefault();
+      trackEvent("footer_link_click", { destination: link.href });
+      const target = document.querySelector(link.href);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    } else {
+      trackEvent("footer_link_click", { destination: link.href });
+    }
+  }
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -25,7 +38,7 @@ export default function Footer() {
                   key={link.label}
                   target={link.href.startsWith("http") ? "_blank" : undefined}
                   rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                  onClick={() => trackEvent("footer_link_click", { destination: link.href })}
+                  onClick={(e) => handleLinkClick(e, link)}
                 >
                   {link.label}
                 </a>

@@ -79,7 +79,7 @@
   border-radius: inherit;
   border: 1px solid rgba(255, 195, 40, 0.12);
   z-index: 1;
-  pointer-events: none;
+  pointer-events:visible;
 }
 
 .mediaFrame::after {
@@ -88,7 +88,7 @@
   inset: 0;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: inherit;
-  pointer-events: none;
+pointer-events:visible;
 }
 
 .mediaFrame img {
@@ -709,7 +709,7 @@
     rgba(255, 255, 255, 0.03) 20px,
     rgba(255, 255, 255, 0.03) 40px
   );
-  pointer-events: none;
+pointer-events:visible;
 }
 
 .investmentGrid {
@@ -1119,7 +1119,7 @@
     rgba(255, 255, 255, 0.03) 30px,
     rgba(255, 255, 255, 0.03) 60px
   );
-  pointer-events: none;
+pointer-events:visible;
 }
 
 .ctaGrid {
